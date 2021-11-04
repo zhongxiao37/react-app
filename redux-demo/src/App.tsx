@@ -8,9 +8,7 @@ export interface IApp {
   onDecrement?: () => void;
 }
 
-const App: React.FC<IApp> = (store) => {
-  console.log(store);
-  const { cnt, onIncrement, onDecrement } = store;
+const App: React.FC<IApp> = ({ cnt, onIncrement, onDecrement }) => {
   return (
     <div>
       <h1>{cnt}</h1>
