@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useReducer } from 'react';
 
 const initialState = { count: 0 };
@@ -22,9 +22,17 @@ const reducer = (
 };
 
 const App: React.FC = () => {
+  const [text, setText] = useState('');
   const [state, dispatch] = useReducer(reducer, { count: 0 });
+  console.log('state', state);
+
+  React.useEffect(() => {
+    console.log('in useEffect');
+    setText('Hello' + new Date().getTime());
+  }, []);
   return (
     <>
+      <h1>{text}</h1>
       <h1>{state.count}</h1>
       <p className="text-center">
         <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
